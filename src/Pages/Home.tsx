@@ -156,24 +156,15 @@ function Home() {
     }
   };
 
-  const objName = { id: "name", name: "name", ph: "名前" };
-  const objUname = { id: "username", name: "username", ph: "ユーザー名" };
-  const objEmail = {
-    id: "mailAddress",
-    name: "mailAddress",
-    ph: "メールアドレス",
-  };
-  const objPassword = { id: "password", name: "password", ph: "パスワード" };
-  const objpassCheck = {
-    id: "passCheck",
-    name: "passCheck",
-    ph: "パスワード確認",
-  };
-  const objPostCode = {
-    id: "postCode",
-    name: "postCode",
-    ph: "郵便番号",
-  };
+  const objName = { id: "name", name: "名前" };
+  const objUname = { id: "username", name: "ユーザー名" };
+  const objEmail = { id: "mailAddress", name: "メールアドレス" };
+  const objPassword = { id: "password", name: "パスワード" };
+  const objpassCheck = { id: "passCheck", name: "パスワード確認" };
+  const objPostCode = { id: "postCode", name: "郵便番号" };
+  const objPrefecture = { id: "prefecture", name: "都道府県" };
+  const objCity = { id: "city", name: "市区町村" };
+  const objAddress = { id: "address", name: "番地" };
 
   // フォームのレンダリング
   return (
@@ -232,41 +223,24 @@ function Home() {
           />
 
           {/* HTML住所 */}
-          <div className="formField">
-            <label>都道府県</label>
-            <input
-              type="text"
-              name="prefecture"
-              placeholder="都道府県"
-              value={formValues.prefecture}
-              onChange={(e) => handleChange(e)}
-            />
-          </div>
-          <p className="errorMsg">{formErrors.prefecture}</p>
-
-          <div className="formField">
-            <label>市区町村</label>
-            <input
-              type="text"
-              name="city"
-              placeholder="市区町村"
-              value={formValues.city}
-              onChange={(e) => handleChange(e)}
-            />
-          </div>
-          <p className="errorMsg">{formErrors.city}</p>
-
-          <div className="formField">
-            <label>番地</label>
-            <input
-              type="text"
-              name="address"
-              placeholder="番地"
-              value={formValues.address}
-              onChange={(e) => handleChange(e)}
-            />
-          </div>
-          <p className="errorMsg">{formErrors.address}</p>
+          <InputForm
+            {...objPrefecture}
+            errormsg={formErrors.prefecture}
+            inputValue={formValues.prefecture}
+            onChange={(e) => handleChange(e)}
+          />
+          <InputForm
+            {...objCity}
+            errormsg={formErrors.city}
+            inputValue={formValues.city}
+            onChange={(e) => handleChange(e)}
+          />
+          <InputForm
+            {...objAddress}
+            errormsg={formErrors.address}
+            inputValue={formValues.address}
+            onChange={(e) => handleChange(e)}
+          />
 
           <button className="submitButton">登録</button>
           {Object.keys(formErrors).length === 0 && isSubmit && (
