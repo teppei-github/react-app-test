@@ -41,7 +41,6 @@ function Home() {
   // 入力値が変更されたときのハンドラー関数
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-    console.log("handleChange", name, value);
     setFormValues({ ...formValues, [name]: value });
   };
 
@@ -54,7 +53,6 @@ function Home() {
     if (!errflg) {
       navigate("/register");
     }
-    setIsSubmit(true);
   };
 
   // フォームのエラーと値が変更されたときに実行される副作用関数
@@ -67,7 +65,7 @@ function Home() {
 
   // バリデーションチェック
   const validate = (values: formValueType) => {
-    const errors: formValueType = initialValues;
+    const errors: formValueType = { ...initialValues };
     let errflg = false;
     // メールアドレスの正規表現
     const regex =
