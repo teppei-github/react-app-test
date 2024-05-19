@@ -1,0 +1,15 @@
+.box {
+  display: block;
+  height: 200px;
+  width: 200px;
+}
+
+.light {
+  color: black;
+  background-color: skyblue;
+}
+
+.dark {
+  color: white;
+  background-color: black;
+}
