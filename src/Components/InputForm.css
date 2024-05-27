@@ -3,6 +3,9 @@
   flex-direction: column;
   width: 100%;
 }
+.inputWrap {
+  margin-bottom: 2rem;
+}
 
 .formField input {
   border: 1px solid grey;

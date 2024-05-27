@@ -21,7 +21,6 @@ function Login() {
   // useStateフックを使用して、フォームの値とエラーを管理します
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState<Partial<formValueType>>({});
-  const [isSubmit, setIsSubmit] = useState(false);
 
   // 入力値が変更されたときのハンドラー関数
   const handleChange = (e: any) => {
@@ -36,17 +35,14 @@ function Login() {
     const { errflg, errors } = validate(formValues);
     setFormErrors(errors);
     if (!errflg) {
-      navigate("/register");
+      navigate("/mypage");
     }
   };
 
   // フォームのエラーと値が変更されたときに実行される副作用関数
   useEffect(() => {
     console.log(formErrors);
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      console.log(formValues);
-    }
-  }, [formErrors, formValues, isSubmit]);
+  }, [formErrors, formValues]);
 
   // バリデーションチェック
   const validate = (values: formValueType) => {
@@ -82,9 +78,9 @@ function Login() {
 
   // フォームのレンダリング
   return (
-    <div className="formContainer">
+    <div className="max-w-2xl mx-auto mt-24">
       <form onSubmit={handleSubmit}>
-        <h1>会員登録</h1>
+        <h1 className="text-center">ログイン</h1>
         <div className="uiForm">
           {/* HTMLメールアドレス */}
           <InputForm
@@ -101,11 +97,12 @@ function Login() {
             onChange={(e) => handleChange(e)}
           />
 
-          {/* HTML登録ボタン */}
-          <button className="submitButton">登録する</button>
-          {Object.keys(formErrors).length === 0 && isSubmit && (
-            <div className="msgOk">登録に成功しました</div>
-          )}
+          {/* HTML登録ボタン6f66fc */}
+          <div className="text-end">
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded ">
+              ログイン
+            </button>
+          </div>
         </div>
       </form>
     </div>

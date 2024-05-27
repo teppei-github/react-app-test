@@ -17,7 +17,7 @@ const InputForm: React.FC<Props> = ({
   onChange,
 }) => {
   return (
-    <>
+    <div className="inputWrap">
       <div className="formField">
         <label>{name}</label>
         <input
@@ -29,7 +29,7 @@ const InputForm: React.FC<Props> = ({
         />
       </div>
       <p className="errorMsg">{errormsg}</p>
-    </>
+    </div>
   );
 };
 
