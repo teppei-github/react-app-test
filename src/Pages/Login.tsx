@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import InputForm from "../Components/InputForm";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
+import axios from "axios";
 
 function Login() {
   let navigate = useNavigate();
@@ -29,13 +30,24 @@ function Login() {
   };
 
   // フォームの送信ハンドラー関数
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     // バリデーションを実行してエラーを設定します
     const { errflg, errors } = validate(formValues);
     setFormErrors(errors);
     if (!errflg) {
-      navigate("/mypage");
+      try {
+        const response = await axios.post("http://laravel.app/login", {
+          email: formValues.loginId,
+          password: formValues.password,
+        });
+        console.log("Login successful", response.data);
+        // ログインが成功した後の処理をここに記述する
+      } catch (error) {
+        console.error("Login error", error);
+      }
+
+      //navigate("/mypage");
     }
   };
 
